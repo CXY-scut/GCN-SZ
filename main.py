@@ -8,7 +8,7 @@ from torch_geometric.data import DataLoader
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import recall_score, precision_score, f1_score, confusion_matrix
 from model import Model
-from Correlation_function import BrainGraphBuild, MyDataset, EarlyStopping
+from Correlation_function import BrainGraphBuild1, BrainGraphBuild2, MyDataset, EarlyStopping
 
 
 parser = argparse.ArgumentParser()
@@ -33,7 +33,8 @@ if torch.cuda.is_available():
 txt_path = "xxx"
 fmri_feature_path = "xxx"
 smri_feature_path = "xxx"
-data_list = BrainGraphBuild(txt_path, fmri_feature_path, smri_feature_path, args.sparsity)
+data_list = BrainGraphBuild1(txt_path, fmri_feature_path, smri_feature_path, args.sparsity)
+# data_list = BrainGraphBuild2(fbm_path, gmm_path, fmri_feature_path, smri_feature_path, args.sparsity)
 
 def TrainOnce(model, criterion, optimizer, train_loader):
     """
